@@ -1,3 +1,4 @@
 ### Current schedule
-Monday -> Sunday
+Monday -> Sunday 
+
 Eshaan, Nathan, Rajen, Aditya, Michael, Patrick, Will
