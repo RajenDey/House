@@ -1,8 +1,9 @@
 import slack
 import datetime
 import time
+import os
 
-SLACK_TOKEN = "xoxb-3903743871319-3986032070196-GrJDy7I92PbKSpNPoxdNV2db"
+SLACK_TOKEN = os.environ["HOUSE_SLACK_KEY"]
 client = slack.WebClient(token=SLACK_TOKEN)
 
 # names = ["Eshaan", "Nathan", "Rajen", "Aditya", "Michael", "Patrick", "Will"]
