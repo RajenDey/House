@@ -3,6 +3,8 @@ from datetime import datetime
 from constants import DAY_TIMESTEPS, FORTNITE_TIMESTEPS, WEEK_TIMESTEPS
 import who
 
+# schedule daily chores starting from 8/30/2022 at 9am
+# schedule weekly and biweekly chores starting from 9/3/2022 at 9am
 day_t = datetime(year=2022, month=8, day=30, hour=9)
 week_t = datetime(year=2022, month=9, day=3, hour=9)
 fortnite_t = week_t

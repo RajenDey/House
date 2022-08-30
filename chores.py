@@ -25,9 +25,12 @@ class Chores:
             print(f"scheduling message for {self.t}")
             unix_time = time.mktime(self.t.timetuple())
             client.chat_scheduleMessage(channel='#chores', text=f"{self.message} <@{self.who.get_who(self.t)}>", post_at=unix_time)
-            if self.stepsize == Stepsize.DAY:
-                self.t += datetime.timedelta(days=1)
-            elif self.stepsize == Stepsize.WEEK:
-                self.t += datetime.timedelta(weeks=1)
-            elif self.stepsize == Stepsize.FORTNITE:
-                self.t += datetime.timedelta(weeks=2)
+            self.step()
+    
+    def step(self):
+        if self.stepsize == Stepsize.DAY:
+            self.t += datetime.timedelta(days=1)
+        elif self.stepsize == Stepsize.WEEK:
+            self.t += datetime.timedelta(weeks=1)
+        elif self.stepsize == Stepsize.FORTNITE:
+            self.t += datetime.timedelta(weeks=2)
