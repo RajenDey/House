@@ -1,8 +1,8 @@
-import slack
-import os
+from os import environ
+from slack import WebClient
 
-SLACK_TOKEN = os.environ["HOUSE_SLACK_KEY"]
-client = slack.WebClient(token=SLACK_TOKEN)
+SLACK_TOKEN = environ["HOUSE_SLACK_KEY"]
+client = WebClient(token=SLACK_TOKEN)
 
 for message in client.chat_scheduledMessages_list()["scheduled_messages"]:
     print(message["id"])
