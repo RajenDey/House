@@ -1,22 +1,21 @@
 import chores
 from datetime import datetime
-from constants import DAY_TIMESTEPS, FORTNITE_TIMESTEPS, WEEK_TIMESTEPS
+from constants import DAY_TIMESTEPS, WEEK_TIMESTEPS, FORTNITE_TIMESTEPS
 import who
 
-# schedule daily chores starting from 8/30/2022 at 9am
-# schedule weekly and biweekly chores starting from 9/3/2022 at 9am
-day_t = datetime(year=2022, month=8, day=30, hour=9)
-week_t = datetime(year=2022, month=9, day=3, hour=9)
-fortnite_t = week_t
+# update these when re-run
+daily_9am = datetime(year=2022, month=9, day=2, hour=9)
+wednesday_9am = datetime(year=2022, month=9, day=7, hour=9)
+saturday_9am = datetime(year=2022, month=9, day=3, hour=9)
 
-trash = chores.Chores(day_t, "Take out the trash", chores.Stepsize.DAY, who.WhoTrash())
-dumpster = chores.Chores(week_t, "Take out the dumpster", chores.Stepsize.WEEK, who.WhoDumpster())
-dishes = chores.Chores(day_t, "Do the dishes", chores.Stepsize.DAY, who.WhoDishes())
-cleaning = chores.Chores(week_t, "Mop the floors and clean the surfaces", chores.Stepsize.WEEK, who.WhoCleaning())
-refrigerator = chores.Chores(fortnite_t, "Clean out the refrigerators", chores.Stepsize.FORTNITE, who.WhoRefrigerator())
+trash = chores.Chores(daily_9am, "Take out the trash", chores.Stepsize.DAY, who.WhoTrash())
+dumpster = chores.Chores(wednesday_9am, "Take out the dumpster", chores.Stepsize.WEEK, who.WhoDumpster())
+dishes = chores.Chores(daily_9am, "Do the dishes", chores.Stepsize.DAY, who.WhoDishes())
+cleaning = chores.Chores(saturday_9am, "Mop the floors and clean the surfaces", chores.Stepsize.WEEK, who.WhoCleaning())
+refrigerator = chores.Chores(saturday_9am, "Clean out the refrigerators", chores.Stepsize.FORTNITE, who.WhoRefrigerator())
 
 trash.schedule_messages(DAY_TIMESTEPS)
 dumpster.schedule_messages(WEEK_TIMESTEPS)
 dishes.schedule_messages(DAY_TIMESTEPS)
 cleaning.schedule_messages(WEEK_TIMESTEPS)
-refrigerator.schedule_messages(FORTNITE_TIMESTEPS)
+# refrigerator.schedule_messages(FORTNITE_TIMESTEPS)

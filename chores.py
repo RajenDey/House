@@ -14,8 +14,8 @@ class Stepsize(Enum):
     FORTNITE = 3
 
 class Chores:
-    def __init__(self, t: datetime.datetime, message: str, stepsize: Stepsize, who: Who):
-        self.t = t
+    def __init__(self, start_time: datetime.datetime, message: str, stepsize: Stepsize, who: Who):
+        self.t = start_time
         self.message = message
         self.stepsize = stepsize
         self.who = who
