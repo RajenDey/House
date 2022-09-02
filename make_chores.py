@@ -1,19 +1,24 @@
 from datetime import datetime
+from os import environ
+from slack import WebClient
 from chore import Chore
 from stepsize import Stepsize
 from who import *
 from constants import DAY_TIMESTEPS, WEEK_TIMESTEPS, FORTNITE_TIMESTEPS
+
+SLACK_TOKEN = environ["HOUSE_SLACK_KEY"]
+client = WebClient(token=SLACK_TOKEN)
 
 # update these when re-run
 daily_9am = datetime(year=2022, month=9, day=2, hour=9)
 wednesday_9am = datetime(year=2022, month=9, day=7, hour=9)
 saturday_9am = datetime(year=2022, month=9, day=3, hour=9)
 
-trash = Chore(daily_9am, "Take out the trash", Stepsize.DAY, WhoTrash())
-dumpster = Chore(wednesday_9am, "Take out the dumpster", Stepsize.WEEK, WhoDumpster())
-dishes = Chore(daily_9am, "Do the dishes", Stepsize.DAY, WhoDishes())
-cleaning = Chore(saturday_9am, "Mop the floors and clean the surfaces", Stepsize.WEEK, WhoCleaning())
-refrigerator = Chore(saturday_9am, "Clean out the refrigerators", Stepsize.FORTNITE, WhoRefrigerator())
+trash = Chore(client, daily_9am, "Take out the trash", Stepsize.DAY, WhoTrash())
+dumpster = Chore(client, wednesday_9am, "Take out the dumpster", Stepsize.WEEK, WhoDumpster())
+dishes = Chore(client, daily_9am, "Do the dishes", Stepsize.DAY, WhoDishes())
+cleaning = Chore(client, saturday_9am, "Mop the floors and clean the surfaces", Stepsize.WEEK, WhoCleaning())
+refrigerator = Chore(client, saturday_9am, "Clean out the refrigerators", Stepsize.FORTNITE, WhoRefrigerator())
 
 trash.schedule_messages(DAY_TIMESTEPS)
 dumpster.schedule_messages(WEEK_TIMESTEPS)
