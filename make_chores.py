@@ -10,10 +10,10 @@ SLACK_TOKEN = environ["HOUSE_SLACK_KEY"]
 client = WebClient(token=SLACK_TOKEN)
 
 # update these when re-run
-daily_9am = datetime(year=2022, month=10, day=7, hour=9)
+daily_9am = datetime(year=2022, month=10, day=9, hour=9)
 monday_9am = datetime(year=2022, month=10, day=10, hour=9)
 tuesday_9am = datetime(year=2022, month=10, day=11, hour=9)
-saturday_9am = datetime(year=2022, month=10, day=8, hour=9)
+saturday_9am = datetime(year=2022, month=10, day=15, hour=9)
 
 trash = Chore(client, daily_9am, "Take out the trash", Stepsize.DAY, WhoTrash())
 dumpster_out = Chore(client, monday_9am, "Take out the dumpster", Stepsize.WEEK, WhoDumpster())
